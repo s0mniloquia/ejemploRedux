@@ -51,7 +51,7 @@ export class LoginComponentView implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this._loginService.setLoginState(this.formLogin);
+    this._loginService.dispatchLogin(this.formLogin);
   }
 
   ngOnDestroy(): void {

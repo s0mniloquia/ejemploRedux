@@ -22,7 +22,7 @@ export class AuthService implements OnDestroy {
   constructor(private http: HttpService, private _store: Store<StoreApp>) {
     this.url = 'login';
     this.loginSuscription = this._store.select('userLogged').subscribe(params => {
-      this.userLogged = params.currentUser;
+      this.userLogged = params?.currentUser;
     });
   }
   loginUser = (data: any): Observable<any> => {
@@ -39,7 +39,7 @@ export class AuthService implements OnDestroy {
     return this._store.select('userLogged');
   }
 
-  setLoginState = (dataForm: FormGroup) => {
+  dispatchLogin = (dataForm: FormGroup) => {
     this._store.dispatch(new LoginAction(dataForm.value));
   }
 

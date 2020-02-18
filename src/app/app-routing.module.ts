@@ -23,11 +23,11 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'prefix'
+    pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'login'
   }
 ];
 

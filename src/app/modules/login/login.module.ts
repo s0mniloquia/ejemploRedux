@@ -8,7 +8,7 @@ import { AuthEffects } from '../../store/effects/auth.effect';
 import { StoreModule } from '@ngrx/store';
 import { authReducer } from '../../store/reducers/auth.reducer';
 import { ErrorModule } from '../../shared/components/error/error.module';
-import { LoadingModule } from '../../shared/components/loading/loading/loading.module';
+import { LoadingModule } from '../../shared/components/loading/loading.module';
 
 
 @NgModule({
