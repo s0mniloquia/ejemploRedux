@@ -1,0 +1,63 @@
+
+    <vdfn-loading [display]="loading"></vdfn-loading>
+
+    <vdfn-error [error]="error"></vdfn-error>
+    
+    <div class="page-body-wrapper full-page-wrapper auth-page">
+      <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+        <div class="row w-100">
+          <div class="col-lg-4 mx-auto">
+            <h1 class="text-center mb-4"> Introducir credenciales</h1>
+            <div class="auto-form-wrapper">
+              <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label class="label">Email</label>
+                  <div class="input-group">
+                    
+                    <input type="email"
+                           class="form-control"
+                           placeholder="Email"
+                           formControlName="email"
+                           name="email"
+                           required>
+                    
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="fa fa-check-circle"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="label">Contraseña</label>
+                  <div class="input-group">
+                    
+                    <input type="password"
+                           class="form-control"
+                           placeholder="*********"
+                           formControlName="password"
+                           name="password"
+                           required>
+                    
+                    <div class="input-group-append">
+                      <span class="input-group-text">
+                        <i class="fa fa-check-circle"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary submit-btn btn-block">Login</button>
+                 
+                </div>
+             
+              </form>
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+  
