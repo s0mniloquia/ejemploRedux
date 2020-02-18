@@ -22,7 +22,7 @@ constructor(private http: HttpClient) {
   }
 
   deleteMethod(url: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}2/${url}`);
+    return this.http.delete(`${this.baseUrl}/${url}`);
   }
 
 
