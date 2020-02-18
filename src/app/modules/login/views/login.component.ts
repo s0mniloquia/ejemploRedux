@@ -44,9 +44,9 @@ export class LoginComponentView implements OnInit, OnDestroy {
 
     this.loginChanges$ = this._loginService.getLoginState$().subscribe(user => {
       this.loading = user.loading;
+      this.error = user.error;
       this._router.navigate(['/usuarios']);
-    },
-    error => console.log(error));
+    });
 
   }
 

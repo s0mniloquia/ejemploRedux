@@ -21,7 +21,7 @@ export class AuthService implements OnDestroy {
   // tslint:disable-next-line: variable-name
   constructor(private http: HttpService, private _store: Store<StoreApp>) {
     this.url = 'login';
-    this._store.select('userLogged').subscribe(params => {
+    this.loginSuscription = this._store.select('userLogged').subscribe(params => {
       this.userLogged = params.currentUser;
     });
   }
@@ -40,12 +40,10 @@ export class AuthService implements OnDestroy {
   }
 
   setLoginState = (dataForm: FormGroup) => {
-    debugger;
     this._store.dispatch(new LoginAction(dataForm.value));
   }
 
   ngOnDestroy(): void {
     this.loginSuscription?.unsubscribe();
   }
-
 }

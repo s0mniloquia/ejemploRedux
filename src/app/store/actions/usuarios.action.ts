@@ -4,6 +4,7 @@ import { Action } from '@ngrx/store';
 
 // Model
 import { User } from '../../modules/usuarios/model/user.model';
+import { IError } from '../../shared/components/error/error.interface';
 
 export const enum ActionsUsuarios{
     CARGAR_USUARIOS = '[Usuarios] Cargar usuarios',
@@ -25,7 +26,7 @@ export class CargarUsuariosSuccessAction implements Action {
 
 export class CargarUsuariosErrorAction implements Action {
     readonly type = ActionsUsuarios.CARGAR_USUARIOS_ERROR;
-    constructor(public payload: any) {}
+    constructor(public payload: IError) {}
 }
 
 export class BorrarUsuarioAction implements Action {
@@ -40,7 +41,7 @@ export class BorrarUsuarioSuccessAction implements Action {
 
 export class BorrarUsuarioErrorAction implements Action {
     readonly type = ActionsUsuarios.BORRAR_USUARIO_ERROR;
-    constructor(public payload: any) {}
+    constructor(public payload: IError) {}
 }
 
 export type actions = CargarUsuariosAction
