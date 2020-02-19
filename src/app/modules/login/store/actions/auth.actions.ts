@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
-import { User } from '../../modules/usuarios/model/user.model';
-import { IError } from '../../shared/components/error/error.interface';
+import { User } from '../../../usuarios/model/user.model';
+import { IError } from '../../../../shared/components/error/error.interface';
+
 
 export const enum ActionsAuth {
     LOGIN = '[Login] Login',

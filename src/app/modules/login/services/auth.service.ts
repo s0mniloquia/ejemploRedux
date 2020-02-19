@@ -6,8 +6,8 @@ import { Store } from '@ngrx/store';
 import { UserLogged } from '../model/auth.model';
 import { FormGroup } from '@angular/forms';
 import { StoreApp } from '../../../store';
-import { LoginAction } from '../store/actions/auth.action';
-import { AuthState } from '../store/reducers/auth.reducer';
+import { LoginAction } from '../store/actions/auth.actions';
+import { AuthState } from '../store/reducers/auth.reducers';
 
 @Injectable({
   providedIn: 'root'

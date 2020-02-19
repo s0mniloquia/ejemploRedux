@@ -1,4 +1,4 @@
-import { actions, ActionsAuth } from '../actions/auth.action';
+import { actions, ActionsAuth } from '../actions/auth.actions';
 import { UserLogged } from '../../model/auth.model';
 
 export interface AuthState {

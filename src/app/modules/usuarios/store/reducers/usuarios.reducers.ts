@@ -1,7 +1,6 @@
-import { User } from '../../modules/usuarios/model/user.model';
-import { ActionsUsuarios, actions } from '../actions/usuarios.action';
-import * as store from '../store';
-import { IError } from '../../shared/components/error/error.interface';
+import { ActionsUsuarios, actions } from '../actions/usuarios.actions';
+import { User } from '../../model/user.model';
+import { IError } from '../../../../shared/components/error/error.interface';
 
 
 export interface UsuariosState {
