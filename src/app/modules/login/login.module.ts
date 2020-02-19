@@ -4,11 +4,11 @@ import { LoginComponentView } from './views/login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from '../../store/effects/auth.effect';
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from '../../store/reducers/auth.reducer';
 import { ErrorModule } from '../../shared/components/error/error.module';
 import { LoadingModule } from '../../shared/components/loading/loading.module';
+import { authReducer } from './store/reducers/auth.reducer';
+import { AuthEffects } from './store/effects/auth.effect';
 
 
 @NgModule({

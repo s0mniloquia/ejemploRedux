@@ -4,10 +4,10 @@ import { map, filter } from 'rxjs/operators';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { UserLogged } from '../model/auth.model';
-import { StoreApp } from '../../../store/store';
-import { UserLoggedState } from '../../../store/reducers/auth.reducer';
 import { FormGroup } from '@angular/forms';
-import { LoginAction } from '../../../store/actions/auth.action';
+import { StoreApp } from '../../../store';
+import { UserLoggedState } from '../store/reducers/auth.reducer';
+import { LoginAction } from '../store/actions/auth.action';
 
 @Injectable({
   providedIn: 'root'

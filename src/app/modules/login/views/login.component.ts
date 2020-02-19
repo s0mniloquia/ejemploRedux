@@ -1,12 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { LoginAction } from '../../../store/actions/auth.action';
-import { filter } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UserLoggedState } from 'src/app/store/reducers/auth.reducer';
 import { IError } from '../../../shared/components/error/error.interface';
 
 @Component({

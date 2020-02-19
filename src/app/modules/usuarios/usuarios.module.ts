@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { UsuariosComponentView } from './views/usuarios.component';
 import { UsuariosRoutingModule } from './usuarios-routing.module';
 import { EffectsModule } from '@ngrx/effects';
-import { UsuariosEffects } from '../../store/effects/usuarios.effect';
 import { StoreModule } from '@ngrx/store';
-import { usuariosReducer } from '../../store/reducers/usuarios.reducer';
 import { UsuariosListModule } from '../../shared/components/usuarios-list/usuarios-list.module';
+import { UsuariosEffects } from './store/effects/usuarios.effect';
+import { usuariosReducer } from './store/reducers/usuarios.reducer';
 
 @NgModule({
   declarations: [UsuariosComponentView],

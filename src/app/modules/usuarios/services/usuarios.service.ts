@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '../../../core/services/http.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CargarUsuariosAction, BorrarUsuarioAction } from '../../../store/actions/usuarios.action';
-import { UsuariosState } from '../../../store/reducers/usuarios.reducer';
 import { Store } from '@ngrx/store';
-import { StoreApp } from 'src/app/store/store';
+import { StoreApp } from '../../../store';
+import { CargarUsuariosAction, BorrarUsuarioAction } from '../store/actions/usuarios.action';
+import { UsuariosState } from '../store/reducers/usuarios.reducer';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +42,5 @@ export class UsuariosService {
   getLoadUsers$ = (): Observable<UsuariosState> => {
     return this._store.select('users');
   }
-
- 
 
 }

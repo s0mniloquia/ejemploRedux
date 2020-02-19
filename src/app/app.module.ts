@@ -8,10 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { authReducer } from './store/reducers/auth.reducer';
-import { LoginModule } from './modules/login/login.module';
-import { UsuariosModule } from './modules/usuarios/usuarios.module';
-import { RouterState } from '@angular/router';
 
 @NgModule({
   declarations: [

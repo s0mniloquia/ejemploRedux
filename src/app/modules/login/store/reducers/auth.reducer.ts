@@ -1,5 +1,5 @@
-import { UserLogged } from '../../modules/login/model/auth.model';
 import { actions, ActionsAuth } from '../actions/auth.action';
+import { UserLogged } from '../../model/auth.model';
 
 export interface UserLoggedState {
     currentUser: UserLogged;
