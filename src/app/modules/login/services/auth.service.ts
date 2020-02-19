@@ -6,8 +6,8 @@ import { Store } from '@ngrx/store';
 import { UserLogged } from '../model/auth.model';
 import { FormGroup } from '@angular/forms';
 import { StoreApp } from '../../../store';
-import { UserLoggedState } from '../store/reducers/auth.reducer';
 import { LoginAction } from '../store/actions/auth.action';
+import { AuthState } from '../store/reducers/auth.reducer';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class AuthService implements OnDestroy {
   // tslint:disable-next-line: variable-name
   constructor(private http: HttpService, private _store: Store<StoreApp>) {
     this.url = 'login';
-    this.loginSuscription = this._store.select('userLogged').subscribe(params => {
+    this.loginSuscription = this._store.select('auth').subscribe(params => {
       this.userLogged = params?.currentUser;
     });
   }
@@ -35,8 +35,8 @@ export class AuthService implements OnDestroy {
     return this.userLogged ? true : false;
   }
 
-  getLoginState$ = (): Observable<UserLoggedState> => {
-    return this._store.select('userLogged');
+  getLoginState$ = (): Observable<AuthState> => {
+    return this._store.select('auth');
   }
 
   dispatchLogin = (dataForm: FormGroup) => {

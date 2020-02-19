@@ -1,19 +1,19 @@
 import { actions, ActionsAuth } from '../actions/auth.action';
 import { UserLogged } from '../../model/auth.model';
 
-export interface UserLoggedState {
+export interface AuthState {
     currentUser: UserLogged;
     error: any;
     loading: boolean;
 }
 
-const estadoInicial: UserLoggedState = {
+const estadoInicial: AuthState = {
     currentUser: null,
     error: null,
     loading: false
 };
 
-export function authReducer(state: UserLoggedState = estadoInicial, action: actions) {
+export function authReducer(state: AuthState = estadoInicial, action: actions) {
     switch ( action.type ) {
 
         case ActionsAuth.LOGIN:

@@ -18,7 +18,7 @@ import { AuthEffects } from './store/effects/auth.effect';
     CommonModule,
     LoginRoutingModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('userLogged', authReducer),
+    StoreModule.forFeature('auth', authReducer),
     EffectsModule.forFeature([AuthEffects])
 
   ],
