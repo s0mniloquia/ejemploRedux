@@ -1,5 +1,4 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { Mock } from 'ts-mockery';
 import { UsuariosService } from './usuarios.service';
 import { CargarUsuariosAction } from '../store/actions/usuarios.actions';
 import { Store } from '@ngrx/store';
