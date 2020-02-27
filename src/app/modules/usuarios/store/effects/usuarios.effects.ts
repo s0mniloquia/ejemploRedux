@@ -1,11 +1,9 @@
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { UsuariosService } from '../../modules/usuarios/services/usuarios.service';
-import * as actions from '../actions/usuarios.action';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { literal } from '@angular/compiler/src/output/output_ast';
-
+import { UsuariosService } from '../../services/usuarios.service';
+import * as actions from '../actions/usuarios.actions';
 @Injectable()
 export class UsuariosEffects{
     public literalPayload = 'payload';

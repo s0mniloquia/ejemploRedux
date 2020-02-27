@@ -1,6 +1,7 @@
 import { ActionsUsuarios, actions } from '../actions/usuarios.actions';
 import { User } from '../../model/user.model';
 import { IError } from '../../../../shared/components/error/error.interface';
+import { ActionType } from '@ngrx/store';
 
 
 export interface UsuariosState {
@@ -9,14 +10,16 @@ export interface UsuariosState {
     loading: boolean;
 }
 
-const estadoInicial: UsuariosState = {
+export const estadoInicial: UsuariosState = {
     users: [],
     error: null,
     loading: false
 };
 
+
+
 export function usuariosReducer(state: UsuariosState = estadoInicial, action: actions): UsuariosState {
-    switch (action.type) {
+    switch (action?.type) {
         case ActionsUsuarios.CARGAR_USUARIOS:
             return { ...state, error: null, loading: true };
 

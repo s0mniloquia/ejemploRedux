@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { StoreApp } from '../../../store';
-import { CargarUsuariosAction, BorrarUsuarioAction } from '../store/actions/usuarios.action';
-import { UsuariosState } from '../store/reducers/usuarios.reducer';
+import { CargarUsuariosAction, BorrarUsuarioAction } from '../store/actions/usuarios.actions';
+import { UsuariosState } from '../store/reducers/usuarios.reducers';
 
 @Injectable({
   providedIn: 'root'

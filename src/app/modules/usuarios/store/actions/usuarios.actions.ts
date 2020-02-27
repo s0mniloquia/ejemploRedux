@@ -1,10 +1,10 @@
 
 // NGRX
 import { Action } from '@ngrx/store';
+import { User } from '../../model/user.model';
+import { IError } from '../../../../shared/components/error/error.interface';
 
 // Model
-import { User } from '../../modules/usuarios/model/user.model';
-import { IError } from '../../shared/components/error/error.interface';
 
 export const enum ActionsUsuarios{
     CARGAR_USUARIOS = '[Usuarios] Cargar usuarios',
