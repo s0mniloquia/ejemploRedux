@@ -3,6 +3,10 @@ import { UsuariosService } from './usuarios.service';
 import { Store } from '@ngrx/store';
 import { UsuariosState } from '../store/reducers/usuarios.reducers';
 import { CargarUsuariosAction } from '../store/actions/usuarios.actions';
+import { UsuariosEffects } from '../store/effects/usuarios.effects';
+import { provideMockActions } from '@ngrx/effects/testing';
+import { Observable } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const currentState: UsuariosState = {
@@ -30,9 +34,12 @@ const currentState: UsuariosState = {
 
 
 describe('UsuariosService', () => {
+  let actions: Observable<any>;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
+      imports: [HttpClientModule],
+      providers: [UsuariosEffects, provideMockActions(() => actions),
         {
           provide: Store,
           useValue: {
@@ -44,8 +51,10 @@ describe('UsuariosService', () => {
     });
   });
 
-  it('should be created', inject([UsuariosService], (service: UsuariosService) => {
-    expect(service).toBeTruthy();
+  fit('should be created UsuariosEffects', inject([UsuariosEffects], (service: UsuariosEffects) => {
+/*     expect(service).toBeTruthy();
+ */    expect(service.getUsers$).toBeTruthy();
+
   }));
 
   fit('should be called a store.dispatch with CargarUsuariosAction', () => {
