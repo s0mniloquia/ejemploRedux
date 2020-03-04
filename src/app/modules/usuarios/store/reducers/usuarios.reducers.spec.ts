@@ -1,5 +1,3 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { Store } from '@ngrx/store';
 import { CargarUsuariosAction, CargarUsuariosSuccessAction } from '../actions/usuarios.actions';
 import { usuariosReducer, estadoInicial } from './usuarios.reducers';
 import { User } from '../../model/user.model';
@@ -23,27 +21,22 @@ const listUsers: User[] = [
 
 describe('UsuariosReducers', () => {
 
-  fit('Return default state', () => {
-    const expectedAction = new CargarUsuariosAction();
+  it('Return default state', () => {
     const newState = usuariosReducer(undefined, undefined);
-
     const initState = estadoInicial;
-
     expect(newState).toEqual(initState);
-
   });
 
-  fit('Change loading state when dispatch cargarUsuariosAction and after load users', () => {
+  it('Change loading state when dispatch cargarUsuariosAction and after when dispatch CargarUsuariosSuccessAction it load users', () => {
     const expectedAction = new CargarUsuariosAction();
     const initState = estadoInicial;
 
     let nextState = usuariosReducer(initState, expectedAction);
     expect(nextState.loading).toBe(true);
 
-
     const futureAction = new CargarUsuariosSuccessAction(listUsers);
     nextState = usuariosReducer(nextState, futureAction);
     expect(nextState.users.length).toBe(2);
-
+    expect(nextState.loading).toBe(false);
   });
 });

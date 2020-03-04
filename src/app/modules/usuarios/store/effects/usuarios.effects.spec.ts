@@ -41,24 +41,12 @@ describe('UsuariosService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
       providers: [UsuariosEffects,
         provideMockActions(() => actions),
-        /* {
-          provide: Store,
-          useValue: {
-            dispatch: jest.fn(),
-            pipe: jest.fn()
-          }
-        } */
         {
             provide: UsuariosService,
             useValue: {
-                getUsers: jest.fn(),
-//                deleteUser: jest.fn(),
-//                getLoadUsers: jest.fn(),
-//                dispatchDeleteUser: jest.fn(),
-//                dispatchLoadUsers: jest.fn()
+                getUsers: jest.fn(), //Unicamente vamos a mockear este metodo del servicio
             }
           }
       ]
@@ -68,11 +56,11 @@ describe('UsuariosService', () => {
     usuariosService = TestBed.inject(UsuariosService);
   });
 
-  fit('should be created UsuariosEffects', () => {
+/*   it('should be created UsuariosEffects', () => {
     expect(effects).toBeTruthy();
-  });
+  }); */
 
-  fit('prueba',() => {
+  it('Testing getUsers$ method', () => {
 
     const usersList: User[] = currentState.users;
     const action = new CargarUsuariosAction();
