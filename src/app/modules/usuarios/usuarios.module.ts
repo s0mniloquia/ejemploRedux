@@ -5,8 +5,8 @@ import { UsuariosRoutingModule } from './usuarios-routing.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { UsuariosListModule } from '../../shared/components/usuarios-list/usuarios-list.module';
-import { UsuariosEffects } from './store/effects/usuarios.effects';
-import { usuariosReducer } from './store/reducers/usuarios.reducers';
+import { UsuariosEffects } from './store/usuarios.effects';
+import { usuariosReducer } from './store/usuarios.reducers';
 
 @NgModule({
   declarations: [UsuariosComponentView],

@@ -2,23 +2,15 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { IError } from '../../../shared/components/error/error.interface';
 
 @Component({
-  selector: 'vdfn-login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 // tslint:disable-next-line: component-class-suffix
-export class LoginComponentView implements OnInit, OnDestroy {
-
+export class LoginComponentView implements OnInit {
   public formLogin: FormGroup;
-  public error: IError = null;
-  loading: boolean;
-
-  // tslint:disable-next-line: semicolon
-  loginChanges$: Subscription
 
   private data = {
     email: 'eve.holt@reqres.in', password: 'cityslicka'
@@ -28,29 +20,16 @@ export class LoginComponentView implements OnInit, OnDestroy {
   constructor(private _loginService: AuthService,
               // tslint:disable-next-line: variable-name
               private _router: Router) {
-    this.loading = false;
   }
 
   ngOnInit() {
-    this._loginService.loginUser(this.data);
     this.formLogin = new FormGroup({
       email: new FormControl(this.data.email, Validators.required),
       password: new FormControl(this.data.password, Validators.required)
     });
-
-    this.loginChanges$ = this._loginService.getLoginState$().subscribe(user => {
-      this.loading = user.loading;
-      this.error = user.error;
-      this._router.navigate(['/usuarios']);
-    });
-
   }
 
   onSubmit() {
     this._loginService.dispatchLogin(this.formLogin);
-  }
-
-  ngOnDestroy(): void {
-    this.loginChanges$?.unsubscribe();
   }
 }

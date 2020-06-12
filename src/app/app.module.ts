@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { uiReducer } from './store/ui.reducer';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,13 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({ ui: uiReducer}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
     EffectsModule.forRoot([])
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

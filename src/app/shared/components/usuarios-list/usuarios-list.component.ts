@@ -1,29 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from '../../../modules/usuarios/model/user.model';
-import { IError } from '../error/error.interface';
 import { UsuariosService } from '../../../modules/usuarios/services/usuarios.service';
+import { Observable } from 'rxjs';
+import { pluck } from 'rxjs/operators';
 
 @Component({
-  selector: 'vdfn-usuarios-list',
+  selector: 'app-usuarios-list',
   templateUrl: './usuarios-list.component.html',
   styleUrls: ['./usuarios-list.component.css']
 })
 export class UsuariosListComponent implements OnInit {
 
-  public loading: boolean;
-  public listaUsuarios: User[];
-  public error: IError = null;
+  public listaUsuarios$: Observable<User[]>;
+
   constructor(private _usuariosService: UsuariosService) { }
+ 
 
   ngOnInit() {
     this._usuariosService.dispatchLoadUsers();
-    this._usuariosService.getLoadUsers$().subscribe( users => {
-      this.listaUsuarios = users.users;
-      this.loading = users.loading;
-      this.error = users.error;
-    });
-
-
+    this.listaUsuarios$ = this._usuariosService.getLoadUsers$().pipe(pluck('users'));
   }
 
   deleteUser = (id: number) => {

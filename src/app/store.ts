@@ -1,11 +1,9 @@
-import { AuthState } from './modules/login/store/reducers/auth.reducers';
-import { UsuariosState } from './modules/usuarios/store/reducers/usuarios.reducers';
+import { AuthState } from './modules/login/store/auth.reducer';
+import { UsuariosState } from './modules/usuarios/store/usuarios.reducers';
+import { UIState } from './store/ui.state';
 
 export interface StoreApp {
+    ui: UIState;
     auth: AuthState;
     users: UsuariosState;
 }
-
-
-
-

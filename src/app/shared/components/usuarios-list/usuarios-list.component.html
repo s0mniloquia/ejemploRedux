@@ -1,9 +1,6 @@
-<vdfn-loading [display]="loading"></vdfn-loading>
 
-<vdfn-error [error]="error"></vdfn-error>
-
-<ul class="list-group" *ngIf="!loading">
-  <li *ngFor="let user of listaUsuarios" class="list-group-item d-flex justify-content-between align-items-center">
+<ul class="list-group">
+  <li *ngFor="let user of (listaUsuarios$ | async)" class="list-group-item d-flex justify-content-between align-items-center">
     {{user.email}}
     <span (click)="deleteUser(user.id)" class="red">X</span>
   </li>

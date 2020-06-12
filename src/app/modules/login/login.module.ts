@@ -5,10 +5,10 @@ import { LoginRoutingModule } from './login-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { ErrorModule } from '../../shared/components/error/error.module';
-import { LoadingModule } from '../../shared/components/loading/loading.module';
-import { authReducer } from './store/reducers/auth.reducers';
-import { AuthEffects } from './store/effects/auth.effects';
+import { ErrorModule } from '../../core/components/error/error.module';
+import { LoadingModule } from '../../core/components/loading/loading.module';
+import { authReducer } from './store/auth.reducer';
+import { AuthEffects } from './store/auth.effects';
 
 
 @NgModule({

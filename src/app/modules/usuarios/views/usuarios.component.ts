@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
-  selector: 'vdfn-usuarios',
+  selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.scss']
 })

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../../../core/services/http.service';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { pluck, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { StoreApp } from '../../../store';
-import { CargarUsuariosAction, BorrarUsuarioAction } from '../store/actions/usuarios.actions';
-import { UsuariosState } from '../store/reducers/usuarios.reducers';
+import { UsuariosState } from '../store/usuarios.reducers';
+import { cargarUsuariosAction, borrarUsuarioAction } from '../store/usuarios.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +24,16 @@ export class UsuariosService {
   }
 
   dispatchLoadUsers = () => {
-    this._store.dispatch(new CargarUsuariosAction());
+    this._store.dispatch(cargarUsuariosAction());
   }
 
   dispatchDeleteUser = (id: number) => {
-    this._store.dispatch(new BorrarUsuarioAction(id));
+    this._store.dispatch(borrarUsuarioAction({id}));
   }
 
   getUsers = (): Observable<any> => {
-    return this._http.getMethod(this.urlListUsers).pipe(map(response => response.data));
+    debugger;
+    return this._http.getMethod(this.urlListUsers).pipe(tap(response => console.log(response)),pluck('data'));
   }
 
   deleteUser = (id: number): Observable<any> => {

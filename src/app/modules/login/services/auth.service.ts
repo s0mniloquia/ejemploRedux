@@ -1,18 +1,19 @@
-import { Injectable, OnInit, OnDestroy } from '@angular/core';
-import { HttpService } from '../../../core/services/http.service';
-import { map, filter } from 'rxjs/operators';
-import { Observable, Subscription } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { Injectable, OnDestroy } from '@angular/core';
 import { UserLogged } from '../model/auth.model';
-import { FormGroup } from '@angular/forms';
+import { Subscription, Observable } from 'rxjs';
+import { HttpService } from '../../../core/services/http.service';
+import { Store } from '@ngrx/store';
 import { StoreApp } from '../../../store';
-import { LoginAction } from '../store/actions/auth.actions';
-import { AuthState } from '../store/reducers/auth.reducers';
+import { mapTo } from 'rxjs/operators';
+import { AuthState } from '../store/auth.reducer';
+import { FormGroup } from '@angular/forms';
+import { loginAction } from '../store/auth.actions';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnDestroy {
+export class AuthService {
 
   userLogged: UserLogged = null;
   private url: string;
@@ -21,29 +22,17 @@ export class AuthService implements OnDestroy {
   // tslint:disable-next-line: variable-name
   constructor(private http: HttpService, private _store: Store<StoreApp>) {
     this.url = 'login';
-    this.loginSuscription = this._store.select('auth').subscribe(params => {
-      this.userLogged = params?.currentUser;
-    });
   }
-  loginUser = (data: any): Observable<any> => {
-    return this.http.postMethod(this.url, data).pipe(map(response => {
-      return { nombre: 'prueba', apellidos: 'Probando', uid: '123123dwfsf32' };
-    }));
+  loginUser = (data: any): Observable<UserLogged> => {
+    return this.http.postMethod(this.url, data).pipe(mapTo({ nombre: 'prueba', apellidos: 'Probando', uid: '123123dwfsf32', rol:'Admin'}));
   }
 
-  isAuth = (): boolean => {
-    return this.userLogged ? true : false;
-  }
-
+ 
   getLoginState$ = (): Observable<AuthState> => {
     return this._store.select('auth');
   }
 
   dispatchLogin = (dataForm: FormGroup) => {
-    this._store.dispatch(new LoginAction(dataForm.value));
-  }
-
-  ngOnDestroy(): void {
-    this.loginSuscription?.unsubscribe();
+    this._store.dispatch(loginAction(dataForm.value));
   }
 }
